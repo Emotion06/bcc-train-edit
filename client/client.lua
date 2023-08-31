@@ -53,7 +53,7 @@ end)
 CreateThread(function()
     if Config.BacchusBridgeDestroying.enabled then
         local PromptGroup = VORPutils.Prompts:SetupPromptGroup()
-        local firstprompt = PromptGroup:RegisterPrompt(Config.Texts.BlowUpBridge, Config.Key, 1, 1, true, 'hold',
+        local firstprompt = PromptGroup:RegisterPrompt(_U("BlowUpBridge"), Config.Key, 1, 1, true, 'hold',
             { timedeventhash = 'MEDIUM_TIMED_EVENT' })
         while true do
             local sleep = true
