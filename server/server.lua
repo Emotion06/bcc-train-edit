@@ -19,13 +19,13 @@ RegisterServerEvent('bcc-bridges:ServerBridgeFallHandler', function(freshJoin)
       if not BridgeDestroyed then
         VORPInv.subItem(_source, Config.BacchusBridgeDestroying.dynamiteItem, Config.BacchusBridgeDestroying.dynamiteItemAmount)
         BridgeDestroyed = true
-        VORPcore.NotifyLeft(_source, Config.Texts.Title, Config.Texts.RunFromExplosion, 'INVENTORY_ITEMS', 'ammo_dynamite_normal', 4000, 'COLOR_PURE_WHITE')
+        VORPcore.NotifyLeft(_source, _U("Title"), _U("RunFromExplosion"), 'INVENTORY_ITEMS', 'ammo_dynamite_normal', 4000, 'COLOR_PURE_WHITE')
         Wait(Config.BacchusBridgeDestroying.explosionTimer)
-        BccUtils.Discord.sendMessage(Config.WebhookLink, 'bcc-bridges', 'https://gamespot.com/a/uploads/original/1179/11799911/3383938-duck.jpg', Config.Texts.BacchusDestroyedWebhook, '')
+        BccUtils.Discord.sendMessage(Config.WebhookLink, 'bcc-bridges', 'https://gamespot.com/a/uploads/original/1179/11799911/3383938-duck.jpg', _U("BacchusDestroyedWebhook"), '')
         TriggerClientEvent('bcc-bridges:BridgeFall', -1) --triggers for all cleints
       end
     else
-      VORPcore.NotifyLeft(_source, Config.Texts.Title, Config.Texts.NoItem, 'INVENTORY_ITEMS', 'ammo_dynamite_normal', 4000, 'COLOR_PURE_WHITE')
+      VORPcore.NotifyLeft(_source, _U("Title"), _U("NoItem"), 'INVENTORY_ITEMS', 'ammo_dynamite_normal', 4000, 'COLOR_PURE_WHITE')
     end
   else
     if BridgeDestroyed then
