@@ -4,7 +4,7 @@
 
 ## Credits
 
-Credits go to [Bryce Canyon County Scripts](https://github.com/BryceCanyonCounty), thank you for this grear script!
+Credits go to [Bryce Canyon County Scripts](https://github.com/BryceCanyonCounty), thank you for this great script!
 
 ## Requirements
 
