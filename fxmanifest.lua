@@ -17,8 +17,10 @@ client_scripts {
 
 shared_scripts {
 	'config.lua',
-	'shared/*.lua',
+	'shared/locale.lua',
+    'languages/*.lua',
 }
+
 
 dependencies { 
     'vorp_core',

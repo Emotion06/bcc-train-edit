@@ -3,12 +3,12 @@
 -------------------------------------------------------------------------
 
 VORPcore = {}
-TriggerEvent('getCore', function(core)
+TriggerEvent("getCore", function(core)
   VORPcore = core
 end)
 
 VORPutils = {}
-TriggerEvent('getUtils', function(utils)
+TriggerEvent("getUtils", function(utils)
   VORPutils = utils
 end)
 
@@ -23,10 +23,10 @@ function loadTrainCars(trainHash)
     end
 end
 
-RegisterNetEvent('bcc-bridges:BridgeFall', function()
+RegisterNetEvent("bcc-bridges:BridgeFall", function()
     local ran = 0
     repeat
-        local object = GetRayfireMapObject(GetEntityCoords(PlayerPedId()), 10000.0, 'des_trn3_bridge')
+        local object = GetRayfireMapObject(GetEntityCoords(PlayerPedId()), 10000.0, "des_trn3_bridge")
         SetStateOfRayfireMapObject(object, 4)
         Wait(100)
         AddExplosion(521.13, 1754.46, 187.65, 28, 1.0, true, false, true)
@@ -39,7 +39,7 @@ RegisterNetEvent('bcc-bridges:BridgeFall', function()
 
     --Spawning ghost train model as the game engine wont allow trains to hit each other this will slow the trains down automatically if near the exploded part of the bridge
     Wait(1000)
-    local trainHash = joaat('engine_config')
+    local trainHash = joaat("engine_config")
     loadTrainCars(trainHash)
     local ghostTrain = Citizen.InvokeNative(0xc239dbd9a57d2a71, trainHash, 499.69, 1768.78, 188.77, false, false, true, false)
 
@@ -53,16 +53,16 @@ end)
 CreateThread(function()
     if Config.BacchusBridgeDestroying.enabled then
         local PromptGroup = VORPutils.Prompts:SetupPromptGroup()
-        local firstprompt = PromptGroup:RegisterPrompt(_U("BlowUpBridge"), Config.Key, 1, 1, true, 'hold',
-            { timedeventhash = 'MEDIUM_TIMED_EVENT' })
+        local firstprompt = PromptGroup:RegisterPrompt(_U("BlowUpBridge"), Config.Key, 1, 1, true, "hold",
+            { timedeventhash = "MEDIUM_TIMED_EVENT" })
         while true do
             local sleep = true
             local px, py, pz = table.unpack(GetEntityCoords(PlayerPedId()))
             if GetDistanceBetweenCoords(px, py, pz, Config.BacchusBridgeDestroying.coords.x, Config.BacchusBridgeDestroying.coords.y, Config.BacchusBridgeDestroying.coords.z, true) < 2 then
                 sleep = false
-                PromptGroup:ShowGroup('')
+                PromptGroup:ShowGroup("")
                 if firstprompt:HasCompleted() then
-                    TriggerServerEvent('bcc-bridges:ServerBridgeFallHandler', false)
+                    TriggerServerEvent("bcc-bridges:ServerBridgeFallHandler", false)
                 end
             end
 
